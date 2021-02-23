@@ -20,7 +20,23 @@ public class Plato {
 
 	@Override
 	public String toString() {
+
 		return "Plato [nombre=" + nombre + ", ingredientes=" + ingredientes + "]";
+		
+	}
+
+
+
+
+	public HashSet<Ingrediente> getIngredientes() {
+		return ingredientes;
+	}
+
+
+
+
+	public void setIngredientes(HashSet<Ingrediente> ingredientes) {
+		this.ingredientes = ingredientes;
 	}
 
 
