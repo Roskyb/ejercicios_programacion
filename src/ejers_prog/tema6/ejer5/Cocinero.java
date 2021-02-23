@@ -102,6 +102,7 @@ public class Cocinero {
 	}
 	
 	public void eliminarCalorias() {
+
 		final int N = 100;
 		Iterator<String> it = platos.keySet().iterator();
 
