@@ -8,9 +8,19 @@ import java.util.Map;
 
 public class Cocinero {
 
-	private ArrayList<Ingrediente> ingredientes = new ArrayList<Ingrediente>();
+	private ArrayList<Ingrediente> ingredientes;
 
-	private Map<String, Plato> platos = new HashMap<String, Plato>();
+	private Map<String, Plato> platos;
+	
+	
+	
+	
+
+	public Cocinero() {
+		super();
+		this.ingredientes = new ArrayList<Ingrediente>() ;
+		this.platos = new HashMap<String, Plato>();
+	}
 
 	public void aniadirIngrediente(Ingrediente ing) {
 
