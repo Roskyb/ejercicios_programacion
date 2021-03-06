@@ -18,7 +18,7 @@ public class GestorConciertos {
 	
 	public void fichConciertosLlenos(String nomFich) throws IOException {
 		
-		ObjectOutputStream oos = new ObjectOutputStream();
+	
 		
 		Set<Concierto> it = ventasConciertos.keySet();
 			
