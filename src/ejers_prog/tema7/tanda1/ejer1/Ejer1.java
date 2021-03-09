@@ -8,14 +8,6 @@ import java.io.IOException;
 
 public class Ejer1 {
 	
-	public static void main(String[] args) throws IOException {
-		
-//		copiarByteAByte(args[0]);
-//		copiarNbytes(args[0]);
-		copiarDeGolpe(args[0]);
-		
-	}
-	
 	public static void copiarByteAByte(String nombre) throws IOException {
 		String path = "img/" + nombre + ".jpg";
 		String copyPath = "img/" + nombre + "_CPY" + ".jpg";
@@ -52,14 +44,9 @@ public class Ejer1 {
 			FileOutputStream fos = new FileOutputStream(copyPath);
 			
 			
-			while(fis.available() > 0) {		
-				
-				byte[] data = new byte[fis.read(buffer)];
-				
-				for (int i = 0; i < data.length; i++) {
-
-				}
-				
+			while(fis.available() > 0) {
+				fis.read(buffer);
+				fos.write(buffer);
 			}
 			
 			fis.close();
@@ -102,6 +89,12 @@ public class Ejer1 {
 		}
 	}
 	
-	
+	public static void main(String[] args) throws IOException {
+		
+//		copiarByteAByte(args[0]);
+//		copiarNbytes(args[0]);
+//		copiarDeGolpe(args[0]);
+		
+	}
 	
 }
