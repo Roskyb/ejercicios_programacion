@@ -1,4 +1,3 @@
-666555777	25	Juan	Vitoria-Gasteiz
 600111222	19	Jordi	Sant Cugat del Valles
 944123432	40	John James	Bilbao
 331768545385	25	Jacques	Paris

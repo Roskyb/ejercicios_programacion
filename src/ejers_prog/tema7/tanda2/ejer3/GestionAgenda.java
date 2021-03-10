@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class GestionAgenda {
 
@@ -20,8 +21,10 @@ public class GestionAgenda {
 	public void ver() throws IOException {
 		File f = new File("files/" + nomFich);
 		
+		
 		if(!f.exists()) System.out.println("La agenda no existe!");
 		else {
+			System.out.println("--------------------------------------");
 			FileReader fr = new FileReader(f);
 			BufferedReader bf = new BufferedReader(fr);
 			
@@ -33,7 +36,7 @@ public class GestionAgenda {
 			}
 			
 			bf.close();
-			
+			System.out.println("--------------------------------------");
 		}
 		
 		
@@ -46,7 +49,6 @@ public class GestionAgenda {
 			FileWriter fw = new FileWriter(f,true);
 			BufferedWriter bw = new BufferedWriter(fw);
 			String entrada = p.toString();
-			
 			bw.newLine();
 			bw.write(entrada);
 			bw.close();
@@ -80,9 +82,49 @@ public class GestionAgenda {
 	}
 	
 	public Persona transforma(String linea) {
-		
 		String[] splitted = linea.split("\t");
-		return new Persona(splitted[2], Integer.parseInt(splitted[1]) , splitted[0], splitted[3]);
+		if(splitted.length == 4) return new Persona(splitted[2], Integer.parseInt(splitted[1]) , splitted[0], splitted[3]);
+		return null;
+	}
+	
+	public boolean eliminaPersona(Persona p) throws IOException {
+		
+		File f = new File("files/" + nomFich);
+		boolean borrado = false;
+		if(!f.exists()) System.out.println("La agenda no existe!");
+		else {
+			FileReader fr = new FileReader(f);
+			BufferedReader bf = new BufferedReader(fr);
+
+			ArrayList<Persona> arr = new ArrayList<Persona>();
+			String linea = bf.readLine();
+			while(linea != null) {
+				Persona per = transforma(linea);
+				if(per != null) {
+					if(!per.equals(p)) arr.add(per);
+				}
+				
+				linea = bf.readLine();
+			}
+			bf.close();
+			
+			FileWriter fw = new FileWriter(f);
+			BufferedWriter bw = new BufferedWriter(fw);
+			
+			for (int i = 0; i < arr.size(); i++) {
+				bw.write(arr.get(i).toString());
+				if(i < arr.size() - 1) {
+					bw.newLine();
+				}
+				
+			}
+			
+			bw.close();
+		}
+
+		
+		
+		return borrado;
 	}
 	
 	
@@ -90,9 +132,16 @@ public class GestionAgenda {
 		GestionAgenda a = new GestionAgenda("personas.txt");
 		a.ver();
 		a.aniadirPersona(new Persona("Jorge", 20, "66211212", "Keoland"));
+		a.aniadirPersona(new Persona("Iker", 20, "66211212", "Keoland"));
+		System.out.println(a.buscaPersona("Juan"));
 		a.ver();
-		System.out.println(a.buscaPersona("Jorge"));
-		
+		a.eliminaPersona(new Persona("Jorge", 20, "66211212", "Keoland"));
+		a.eliminaPersona(new Persona("Iker", 20, "66211212", "Keoland"));
+		a.ver();
+		a.aniadirPersona(new Persona("Jorge", 20, "66211212", "Keoland"));
+		a.ver();
+		a.eliminaPersona(new Persona("Juan", 25, "666555777", "Vitoria-Gasteiz"));
+		a.ver();
 		
 		
 	}
