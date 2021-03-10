@@ -35,14 +35,10 @@ public class GestionComercial {
 	public void verComerciales() throws IOException, ClassNotFoundException {
 		FileInputStream fis = new FileInputStream("files/" + nomFich);
 		ObjectInputStream ois = new ObjectInputStream(fis);
-
-		boolean cont = true;
-		while (cont) {
-			Comercial obj = (Comercial) ois.readObject();
-			if (obj != null)
-				obj.ver();
-			else
-				cont = false;
+		Comercial obj;
+		
+		while (( obj = (Comercial) ois.readObject()) != null) {
+			obj.ver();
 		}
 
 		ois.close();
@@ -52,13 +48,12 @@ public class GestionComercial {
 		FileInputStream fis = new FileInputStream("files/" + nomFich);
 		ObjectInputStream ois = new ObjectInputStream(fis);
 		
-		boolean available = true;
-		while(available) {
-			Comercial obj = (Comercial) ois.readObject();
-			if(obj != null) {
-				 if( obj.getNombre().equals(nomComer)) return obj;
+		Comercial obj;
+		while(( obj = (Comercial) ois.readObject()) != null) {
+			if( obj.getNombre().equals(nomComer)) {
+				ois.close();
+				return obj;
 			}
-			else available = false;
 		}
 		
 		ois.close();
@@ -74,15 +69,9 @@ public class GestionComercial {
 		FileInputStream fis = new FileInputStream("files/" + this.nomFich);
 		ObjectInputStream ois = new ObjectInputStream(fis);
 		
-		boolean available = true;
-		while(available) {
-			Comercial obj = (Comercial) ois.readObject();
-			if(obj != null) {
-				if(obj.getTelf() != null) {
-					obj.getTelf().cargar(10);
-					oos.writeObject(obj.getTelf());
-				}
-			} else available = false;
+		Comercial obj;
+		while(( obj = (Comercial) ois.readObject()) != null) {
+			if(obj.getTelf() != null) obj.getTelf().cargar(10);
 		}
 		
 		oos.writeObject(null);
@@ -97,13 +86,10 @@ public class GestionComercial {
 		
 		ArrayList<Comercial> arr = new ArrayList<Comercial>();
 		
-		boolean available = true;
-		while(available) {
-			Comercial obj = (Comercial) ois.readObject();
-			if(obj != null) {
+		Comercial obj;
+		while(( obj = (Comercial) ois.readObject()) != null) {
 				obj.trabajar();
 				arr.add(obj);
-			} else available = false;
 		}
 		
 		FileOutputStream fos = new FileOutputStream("files/" + nomFich);
@@ -134,14 +120,9 @@ public class GestionComercial {
 		FileInputStream fis = new FileInputStream("files/" + "moviles.obj");
 		ObjectInputStream ois = new ObjectInputStream(fis);
 		
-		boolean cont = true;
-		while (cont) {
-			TelefonoMovil obj = (TelefonoMovil) ois.readObject();
-			
-			if (obj != null)
-				obj.ver();
-			else
-				cont = false;
+		TelefonoMovil obj;
+		while ((obj = (TelefonoMovil) ois.readObject()) != null) {
+			obj.ver();
 		}
 
 		ois.close();
