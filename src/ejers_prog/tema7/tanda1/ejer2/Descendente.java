@@ -162,10 +162,14 @@ public class Descendente {
 			int i = 0;
 			while (fis.available() > 0) {
 				float readed = dis.readFloat();
-				if (i == pos - 1)
+				if (i == pos - 1) {
+					dis.close();
 					return readed;
+				}
 				i++;
 			}
+			
+			dis.close();
 
 		}
 		return -1;
