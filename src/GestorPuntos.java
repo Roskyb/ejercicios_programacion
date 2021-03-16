@@ -59,7 +59,6 @@ public class GestorPuntos {
 			System.out.println("El fichero de puntos no existe");
 		}
 		catch (IOException e) {
-			// TODO Auto-generated catch block
 			System.out.println("Error de lectura de fichero");
 		}
 	}
