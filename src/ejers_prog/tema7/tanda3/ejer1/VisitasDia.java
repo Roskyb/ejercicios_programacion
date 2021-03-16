@@ -9,7 +9,9 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 
 public class VisitasDia {
@@ -130,6 +132,41 @@ public class VisitasDia {
 		
 	}
 	
+	public void crearInforme() throws FileNotFoundException {
+		String nomFich = "files/report_" + this.diaVisitas[1] + "_" + this.diaVisitas[0] + ".txt";
+		PrintWriter pw = new PrintWriter(nomFich);
+		
+		for (Visita v : visitas) {
+			String nombre = v.getNombre();
+			String horas = v.getHoraVisita().getHora() + ":" + v.getHoraVisita().getMinutos();
+			String personas = v.getCantPersonas()+ "personas";
+			pw.write(nombre + "\t" + horas + "\t" + personas + "\n");
+			
+		}
+		
+		
+		pw.close();
+	}
+	
+	public HashMap<String, Integer> mapasLibre(){
+		
+		HashMap<String, Integer> map = new HashMap<String, Integer>();
+		
+		for (Visita v : visitas) {
+			map.put(v.getHoraVisita().toString(), 50 - personasHora(v.getHoraVisita()));
+		}
+		
+		return map;
+		
+	}
+	
+	public void verMapasLibre() {
+		HashMap<String, Integer> maps =  mapasLibre();
+		for (String key : maps.keySet()) {
+			System.out.println(key + " -> " + maps.get(key));
+		}
+	}
+	
 	public void verVisitas() {
 		for (Visita v : visitas) {
 			System.out.println(v.toString());
@@ -161,6 +198,48 @@ public class VisitasDia {
 		return false;
 	}
 	
+	public HoraVisita tiempoVisitaMasCercano(int horas, int minutos) throws IOException {
+		HoraVisita horaLibre = null;
+		
+		BufferedReader bf = new BufferedReader(new FileReader("files/horarios.txt"));
+		HashMap<Integer, HoraVisita> horarios = new HashMap<Integer, HoraVisita>();
+		String line = bf.readLine();
+		while(line != null) {
+			String[] split = line.split("\t");
+			
+			HoraVisita horaVisita = new HoraVisita(Integer.parseInt(split[0]), Integer.parseInt(split[1]));
+			System.out.println(personasHora(horaVisita));
+			if(personasHora(horaVisita) < 50) {
+				int key = 60  * (horaVisita.getHora() - horas) + (horaVisita.getMinutos() - minutos);
+				HoraVisita value = horarios.put(key, horaVisita);
+				if(value != null) {
+					if((24*60) - ((value.getHora()) * 60 + (24 - value.getMinutos())) <  (24*60) - ((horaVisita.getHora()) * 60 + (24 - horaVisita.getMinutos())))
+						horarios.put(key, horaVisita);
+				};
+				
+			}
+			line = bf.readLine();
+		}
+
+		
+		bf.close();
+
+		Iterator<Integer> it = horarios.keySet().iterator();
+		int min = Integer.MAX_VALUE;
+		while(it.hasNext()) {
+			int next = it.next();
+			if(next < min) min = next;
+			else it.remove();
+		}
+
+		horaLibre = horarios.get(min);
+		
+		return horaLibre;
+		
+	}
+	
+		
+	
 	private boolean maxPersonasHora(Visita v) {
 		int total = v.getCantPersonas();
 		for (Visita visita : visitas) {
@@ -168,6 +247,16 @@ public class VisitasDia {
 		}
 		
 		return total <= 50;
+		
+	}
+	
+	private int personasHora(HoraVisita v) {
+		int total = 0;
+		for (Visita visita : visitas) {
+			if(visita.getHoraVisita().equals(v)) total += visita.getCantPersonas();
+		}
+		
+		return total;
 		
 	}
 	
@@ -180,17 +269,21 @@ public class VisitasDia {
 		System.out.println(a.aniadeVisita(new Visita("Juan", 25, 11, 00)));
 		System.out.println(a.aniadeVisita(new Visita("Maria", 25, 11, 00)));
 		System.out.println(a.aniadeVisita(new Visita("Francis", 12, 11, 00)));
-		System.out.println(a.aniadeVisita(new Visita("Francis", 5, 12, 30)));
+		System.out.println(a.aniadeVisita(new Visita("Francis", 7, 12, 30)));
 
 
 		
-		a.guardarFichero("visitasDia.obj");
-		a.verFichero("visitasDia.obj");
-		a.verVisitas();
-		a.cargarVisitas("visitasDia.obj");
-		a.verVisitas();
+//		a.guardarFichero("visitasDia.obj");
+//		a.verFichero("visitasDia.obj");
+//		a.verVisitas();
+//		a.cargarVisitas("visitasDia.obj");
+//		a.verVisitas();
 
-
+		a.crearInforme();
+		
+		a.verMapasLibre();
+		System.out.println(a.tiempoVisitaMasCercano(10, 40));
+		
 		
 	}
 	

@@ -11,7 +11,7 @@ public class HoraVisita implements Serializable{
 
 	@Override
 	public String toString() {
-		return "HoraVisita [hora=" + hora + ", minutos=" + minutos + "]";
+		return hora +  ":" + minutos;
 	}
 
 
