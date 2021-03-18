@@ -1,6 +1,7 @@
 package ejers_prog.tema7.tanda3.ejer1;
 
 import java.io.BufferedReader;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -11,6 +12,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 
@@ -213,7 +215,7 @@ public class VisitasDia {
 				int key = 60  * (horaVisita.getHora() - horas) + (horaVisita.getMinutos() - minutos);
 				HoraVisita value = horarios.put(key, horaVisita);
 				if(value != null) {
-					if((24*60) - ((value.getHora()) * 60 + (24 - value.getMinutos())) <  (24*60) - ((horaVisita.getHora()) * 60 + (24 - horaVisita.getMinutos())))
+					if((24*60) - ((value.getHora()) * 60 + (value.getMinutos())) >  (24*60) - ((horaVisita.getHora()) * 60 + (horaVisita.getMinutos())))
 						horarios.put(key, horaVisita);
 				};
 				
@@ -236,6 +238,46 @@ public class VisitasDia {
 		
 		return horaLibre;
 		
+	}
+	
+	public int borrarVisitasPasadas() throws IOException {
+		int total = 0;
+		Date d = new Date();
+		HoraVisita horaActual = new HoraVisita(d.getHours(), d.getMinutes());
+		String nomFich;
+		Iterator<Visita> it = visitas.iterator();
+		
+		while(it.hasNext()) {		
+			Visita next = it.next();
+			HoraVisita hora = next.getHoraVisita();
+			
+			if(horaAnterior(horaActual, hora)) {
+				total++;
+				short cantPersonas = (short) next.getCantPersonas();				
+				nomFich = "files/visitasPasadas_" + horaActual.getHora() + "_" + horaActual.getMinutos() + "_" + total + ".bin";
+				FileOutputStream fos = new FileOutputStream(nomFich);
+				DataOutputStream dos = new DataOutputStream(fos);
+				dos.writeShort(cantPersonas);
+				dos.close();
+				
+				it.remove();
+			
+			}
+			
+			
+		}
+		
+		
+		return total;
+	}
+	
+	private boolean horaAnterior(HoraVisita h1, HoraVisita h2) {
+		
+
+		
+		return (24*60) - ((h2.getHora()) * 60 + (24 - h2.getMinutos())) 
+				>
+				(24*60) - ((h1.getHora()) * 60 + (24 - h1.getMinutos()));
 	}
 	
 		
@@ -270,7 +312,10 @@ public class VisitasDia {
 		System.out.println(a.aniadeVisita(new Visita("Maria", 25, 11, 00)));
 		System.out.println(a.aniadeVisita(new Visita("Francis", 12, 11, 00)));
 		System.out.println(a.aniadeVisita(new Visita("Francis", 7, 12, 30)));
-
+		System.out.println(a.aniadeVisita(new Visita("Francis", 7, 12, 30)));
+		System.out.println(a.aniadeVisita(new Visita("Francis", 7, 8, 30)));
+		System.out.println(a.aniadeVisita(new Visita("Francis", 7, 7, 30)));
+		System.out.println(a.aniadeVisita(new Visita("Francis", 7, 6, 30)));
 
 		
 //		a.guardarFichero("visitasDia.obj");
@@ -278,12 +323,17 @@ public class VisitasDia {
 //		a.verVisitas();
 //		a.cargarVisitas("visitasDia.obj");
 //		a.verVisitas();
-
-		a.crearInforme();
+//
+//		a.crearInforme();
+//		
+//		a.verMapasLibre();
+//		System.out.println(a.tiempoVisitaMasCercano(10, 40));
 		
-		a.verMapasLibre();
-		System.out.println(a.tiempoVisitaMasCercano(10, 40));
+		a.verVisitas();
 		
+		a.borrarVisitasPasadas();
+		System.out.println("_____________________");
+		a.verVisitas();
 		
 	}
 	
