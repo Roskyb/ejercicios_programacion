@@ -1,6 +1,7 @@
 package ejers_prog.tema7.tanda3.ejer1;
 
 import java.io.BufferedReader;
+import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -292,6 +293,21 @@ public class VisitasDia {
 		
 	}
 	
+	static private void checkearFicheroBorrados(String nomFich) throws IOException {
+		FileInputStream fis = new FileInputStream(nomFich);
+		DataInputStream dis = new DataInputStream(fis);
+		
+		System.out.println(dis.readShort());
+		
+		dis.close();
+		
+		
+		
+		
+	}
+	
+	
+	
 	private int personasHora(HoraVisita v) {
 		int total = 0;
 		for (Visita visita : visitas) {
@@ -313,9 +329,8 @@ public class VisitasDia {
 		System.out.println(a.aniadeVisita(new Visita("Francis", 12, 11, 00)));
 		System.out.println(a.aniadeVisita(new Visita("Francis", 7, 12, 30)));
 		System.out.println(a.aniadeVisita(new Visita("Francis", 7, 12, 30)));
-		System.out.println(a.aniadeVisita(new Visita("Francis", 7, 8, 30)));
 		System.out.println(a.aniadeVisita(new Visita("Francis", 7, 7, 30)));
-		System.out.println(a.aniadeVisita(new Visita("Francis", 7, 6, 30)));
+		System.out.println(a.aniadeVisita(new Visita("Francis", 26, 6, 30)));
 
 		
 //		a.guardarFichero("visitasDia.obj");
@@ -334,7 +349,8 @@ public class VisitasDia {
 		a.borrarVisitasPasadas();
 		System.out.println("_____________________");
 		a.verVisitas();
-		
+		checkearFicheroBorrados("files/visitasPasadas_8_5_2.bin");
+
 	}
 	
 	
