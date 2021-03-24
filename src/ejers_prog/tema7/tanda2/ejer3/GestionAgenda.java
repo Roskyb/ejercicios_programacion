@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class GestionAgenda {
 
@@ -67,7 +68,10 @@ public class GestionAgenda {
 			
 			while(linea != null) {
 				
-				if(nombreEnLinea(linea, nom)) return transforma(linea);
+				if(nombreEnLinea(linea, nom)) {
+					bf.close();
+					return transforma(linea);
+				}
 				linea = bf.readLine();
 			}
 			
@@ -128,6 +132,41 @@ public class GestionAgenda {
 	}
 	
 	
+	public void edadMasFrecuente() throws IOException {
+		BufferedReader bf = new BufferedReader(new FileReader("files/" + nomFich));
+		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+		
+		
+		String line = bf.readLine();
+		Persona per;
+		while(line != null) {
+			per = transforma(line);
+			if(map.containsKey(per.getEdad())) {
+				int cont = map.get(per.getEdad());
+				map.put(per.getEdad(), cont+1);
+			}else {
+				map.put(per.getEdad(), 1);
+			}
+			
+			line = bf.readLine();
+		}
+		
+		bf.close();
+		
+		int max = Integer.MIN_VALUE;
+		int num = -1;
+		for (Integer i : map.keySet()) {
+			if(map.get(i) > max) {
+				max = map.get(i);
+				num = i;
+			}
+		}
+		
+		System.out.println("La edad más frecuente es: " + num);
+			
+	}
+	
+	
 	public static void main(String[] args) throws IOException {
 		GestionAgenda a = new GestionAgenda("personas.txt");
 		a.ver();
@@ -135,13 +174,14 @@ public class GestionAgenda {
 		a.aniadirPersona(new Persona("Iker", 20, "66211212", "Keoland"));
 		System.out.println(a.buscaPersona("Juan"));
 		a.ver();
-		a.eliminaPersona(new Persona("Jorge", 20, "66211212", "Keoland"));
-		a.eliminaPersona(new Persona("Iker", 20, "66211212", "Keoland"));
+//		a.eliminaPersona(new Persona("Jorge", 20, "66211212", "Keoland"));
+//		a.eliminaPersona(new Persona("Iker", 20, "66211212", "Keoland"));
 		a.ver();
 		a.aniadirPersona(new Persona("Jorge", 20, "66211212", "Keoland"));
 		a.ver();
 		a.eliminaPersona(new Persona("Juan", 25, "666555777", "Vitoria-Gasteiz"));
 		a.ver();
+		a.edadMasFrecuente();
 		
 		
 	}
