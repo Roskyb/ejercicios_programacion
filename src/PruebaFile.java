@@ -1,6 +1,5 @@
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -38,6 +37,8 @@ public class PruebaFile {
 				System.out.println(leido);
 				leido = fis.read();
 			}
+			
+			fis.close();
 //			ANOTHER WAY
 //			while(leido != -1) {
 //				System.out.println(leido);

@@ -63,6 +63,7 @@ public class GestionComercial2 {
 		FileInputStream fis = new FileInputStream("files/" + this.nomFich);
 		ObjectInputStream ois = new ObjectInputStream(fis);
 
+		@SuppressWarnings("unchecked")
 		ArrayList<Comercial> arr = (ArrayList<Comercial>) ois.readObject();
 
 		ois.close();
@@ -84,6 +85,7 @@ public class GestionComercial2 {
 		FileInputStream fis = new FileInputStream("files/" + nomFich);
 		ObjectInputStream ois = new ObjectInputStream(fis);
 
+		@SuppressWarnings("unchecked")
 		ArrayList<Comercial> arr =  (ArrayList<Comercial>) ois.readObject();
 	
 		for (Comercial comercial : arr) {

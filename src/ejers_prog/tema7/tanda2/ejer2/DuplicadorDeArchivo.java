@@ -4,7 +4,6 @@ import java.io.IOException;
 
 abstract public class DuplicadorDeArchivo {
 
-	@SuppressWarnings("unused")
 	private String nomRuta;
 	private final String RUTA_DEFAULT = "files/lorem.txt";
 	

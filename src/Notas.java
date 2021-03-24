@@ -14,10 +14,6 @@ public class Notas {
 		super();
 		this.nomFich = nomFich;
 		
-//		Crear fichero nuevo
-		
-		new FileOutputStream(nomFich);
-		
 	}
 	
 	
