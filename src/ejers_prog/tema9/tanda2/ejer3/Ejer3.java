@@ -70,8 +70,8 @@ public class Ejer3 extends JFrame{
 		JLabel tituloImagenes = new JLabel("Conoces estos lugares");
 		panelImagenes.add(tituloImagenes, BorderLayout.NORTH);
 		JPanel contenedorImagenes = new JPanel();
-		contenedorImagenes.setSize(500, 300);
-		contenedorImagenes.setLayout(new GridLayout(0,3));
+		contenedorImagenes.setSize(500, 600);
+		contenedorImagenes.setLayout(new GridLayout(0,3, 2, 2));
 		contenedorImagenes.setVisible(true);
 		
 		ArrayList<JLabel> imagenes = cargarImagenes();
@@ -153,8 +153,8 @@ public class Ejer3 extends JFrame{
 	private static ImageIcon redim(String fichImag, int ancho, int alto) {
 		ImageIcon imIcon = new ImageIcon(fichImag);
 		Image im = imIcon.getImage();
-		Image im2 = im.getScaledInstance(ancho, alto, 0);
-		return new ImageIcon(im2);
+//		Image im2 = im.getScaledInstance(ancho, alto, 0);
+		return new ImageIcon(im);
 	}
 
 
