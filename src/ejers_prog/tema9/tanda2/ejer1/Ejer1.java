@@ -31,6 +31,8 @@ public class Ejer1 extends JFrame{
 	@SuppressWarnings("unused")
 	private final String[] OPCIONES_CALCULADORA = new String[] {"Decimal", "Binario", "Hexadecimal", "Octal"};
 	private ArrayList<JRadioButton> arrayJRadiosButtons;
+	private ArrayList<JButton> botonesCalculadora;
+	private JTextField cajaDeTexto;
 
 	public Ejer1() {
 		this.setLayout(new BorderLayout());
@@ -42,7 +44,7 @@ public class Ejer1 extends JFrame{
 		resultadoPanel.setLayout(new BorderLayout());
 		resultadoPanel.setPreferredSize(new Dimension(585, 100));
 		
-		JTextField cajaDeTexto = new JTextField();
+		cajaDeTexto = new JTextField();
 		cajaDeTexto.setEditable(false);
 		cajaDeTexto.setText("0");
 		cajaDeTexto.setBackground(Color.ORANGE);
@@ -60,8 +62,10 @@ public class Ejer1 extends JFrame{
 		panelNumeros.setVisible(true);
 		panelNumeros.setLayout(new GridLayout(0, 3));
 		
+		botonesCalculadora = new ArrayList<JButton>();
 		for (int i = 0; i < 10; i++) {
 			JButton b = new JButton(Integer.toString(i));
+			botonesCalculadora.add(b);
 			panelNumeros.add(b);
 		}
 		
