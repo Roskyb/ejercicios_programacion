@@ -1,14 +1,11 @@
 package ejers_prog.tema9.tanda2.ejer2;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
-import java.util.Iterator;
 
 import javax.swing.BorderFactory;
-import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -22,26 +19,33 @@ public class Ejer2 extends JFrame {
 	
 
 
+	private static final int N_ETIQUETAS = 10;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6365702989836118135L;
 	private JPanel panelSuperior;
 	private JPanel panelInferior;
+	private JButton botonClickMe;
+	private JTextArea textArea;
+	private JButton botonOk;
 
 
 	public Ejer2() {
 		
 		this.setLayout(new BoxLayout(this.getContentPane(), BoxLayout.Y_AXIS));
-		
+		this.setSize(500, 500);
 		panelSuperior = panelSuperior();
 		panelInferior = panelInferior();
 		
 		this.getContentPane().add(panelSuperior);
-		this.getContentPane().add(Box.createRigidArea(new Dimension(0, 20)));
 		this.getContentPane().add(panelInferior);
-		this.getContentPane().add(Box.createRigidArea(new Dimension(0, 20)));
-		this.getContentPane().add(new JButton("OK"));
+		botonOk = new JButton("OK");
+		this.getContentPane().add(botonOk);
 
 		
 
-		this.setSize(600, 600);
+
 		this.setVisible(true);
 		this.setTitle("Paneles anidados en BoxLayout");
 		
@@ -57,20 +61,17 @@ public class Ejer2 extends JFrame {
 		
 		JPanel gridPanel1 = new JPanel(new GridLayout(0,1));
 		title = BorderFactory.createTitledBorder("GridLayout");
-		gridPanel1.setLocation(5, 20);
-		gridPanel1.setSize(200, 250);
 		gridPanel1.setBorder(title);
 		gridPanel1.setVisible(true);
 		
-		for (int i = 1; i < 4; i++) {
+		for (int i = 1; i <= N_ETIQUETAS; i++) {
 			JLabel j = new JLabel("Label " + i);
+			j.setPreferredSize(new Dimension(this.getSize().width / 4 , 10));
 			gridPanel1.add(j);
-			gridPanel1.add(Box.createRigidArea(new Dimension(200, 0)));
+			
 		}
 
 		panelSuperior.add(gridPanel1, BorderLayout.WEST);
-		
-		
 		
 		
 		
@@ -83,7 +84,7 @@ public class Ejer2 extends JFrame {
 		gridPanel2.setBorder(title);
 		gridPanel2.setVisible(true);
 		
-		for (int i = 1; i < 4; i++) {
+		for (int i = 1; i <= N_ETIQUETAS; i++) {
 			JTextField tf = new JTextField();
 			gridPanel2.add(tf);
 		}
@@ -105,16 +106,14 @@ public class Ejer2 extends JFrame {
 		
 		JPanel borderPanel = new JPanel(new FlowLayout(FlowLayout.CENTER));
 		borderPanel.setBorder(BorderFactory.createTitledBorder("FlowLayout"));
-		borderPanel.add(new JButton("Click Me"));
+		
 		
 		panelInferior.add(borderPanel, BorderLayout.NORTH);
 		
-		JTextArea ta = new JTextArea();
-		
-		panelInferior.add(ta, BorderLayout.CENTER);
-		
-		
-		
+		textArea = new JTextArea();
+		botonClickMe = new JButton("Click Me");
+		borderPanel.add(botonClickMe);
+		panelInferior.add(textArea, BorderLayout.CENTER);
 		
 
 		
@@ -124,7 +123,7 @@ public class Ejer2 extends JFrame {
 	
 	
 	public static void main(String[] args) {
-		Ejer2 a = new Ejer2();
+		new Ejer2();
 	}
 	
 }

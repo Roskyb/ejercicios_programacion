@@ -1,7 +1,6 @@
 package ejers_prog.tema9.tanda2.ejer3;
 
 import java.awt.BorderLayout;
-import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
@@ -9,14 +8,12 @@ import java.awt.Image;
 import java.io.File;
 import java.util.ArrayList;
 
-import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -25,17 +22,29 @@ public class Ejer3 extends JFrame{
 	
 	
 	
-	private JOptionPane panelInicio;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6295532486871215664L;
 	private JPanel panelOpciones;
 	private JPanel panelImagenes;
 	private File directorioImagenes;
+	private JTextArea textAreaOpciones;
+	private JComboBox<String> opciones;
+	private JButton botonGuardar;
 
 
 	public Ejer3() {
 	
-		panelInicio = new JOptionPane(null);
+
+		
 		String inputValue = JOptionPane.showInputDialog("Introduce la ruta");
-		directorioImagenes = new File(inputValue);
+		
+		try {
+			directorioImagenes = new File(inputValue);	
+		} catch (Exception e) {
+			System.out.println("No se ha introducido un fichero valido");
+		}
 		
 		if(inputValue != null && directorioImagenes.exists() && directorioImagenes.isDirectory() && directorioImagenes.list().length > 0) {
 			dibujarVentanaPrincipal();
@@ -98,7 +107,6 @@ public class Ejer3 extends JFrame{
 		ArrayList<JLabel> imagenes = new ArrayList<JLabel>();
 		
 		for (String str : directorioImagenes.list()) {
-			System.out.println(directorioImagenes.getPath() + "\\" + str);
 			JLabel jl = new JLabel();
 			jl.setIcon(redim(directorioImagenes.getPath() + "/" + str, 120, 100));
 			imagenes.add(jl);
@@ -123,7 +131,7 @@ public class Ejer3 extends JFrame{
 		JLabel etiquetaSelecion = new JLabel("Imagen seleccionada");
 		DefaultComboBoxModel<String> a = new DefaultComboBoxModel<String>(directorioImagenes.list());
 		
-		JComboBox<String> opciones = new JComboBox<String>(a);
+		opciones = new JComboBox<String>(a);
 		
 		panelSeleccion.add(etiquetaSelecion);
 		panelSeleccion.add(opciones);
@@ -134,7 +142,7 @@ public class Ejer3 extends JFrame{
 		panelArea.setLayout(new FlowLayout());
 		
 		JLabel etiquetaTextArea = new JLabel("Escribe tu opinion");
-		JTextArea textAreaOpciones = new JTextArea(5, 15);
+		textAreaOpciones = new JTextArea(5, 15);
 		
 		panelArea.add(etiquetaTextArea);
 		panelArea.add(textAreaOpciones);
@@ -142,7 +150,8 @@ public class Ejer3 extends JFrame{
 		
 		panelOpciones.add(panelSeleccion);
 		panelOpciones.add(panelArea);
-		panelOpciones.add(new JButton("Guardar"));
+		botonGuardar = new JButton("Guardar");
+		panelOpciones.add(botonGuardar);
 		
 		panelOpciones.setPreferredSize(new Dimension(350, 300));
 		
@@ -153,13 +162,13 @@ public class Ejer3 extends JFrame{
 	private static ImageIcon redim(String fichImag, int ancho, int alto) {
 		ImageIcon imIcon = new ImageIcon(fichImag);
 		Image im = imIcon.getImage();
-//		Image im2 = im.getScaledInstance(ancho, alto, 0);
-		return new ImageIcon(im);
+		Image im2 = im.getScaledInstance(ancho, alto, 0);
+		return new ImageIcon(im2);
 	}
 
 
 	public static void main(String[] args) {
-		Ejer3 a = new Ejer3();
+		new Ejer3();
 	}
 
 }

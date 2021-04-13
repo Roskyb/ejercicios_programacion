@@ -12,20 +12,25 @@ import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 
 public class Ejer1 extends JFrame{
 
 	
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7467665408889113450L;
 	private JPanel resultadoPanel;
-	private JLabel textoResultado;
 	private JPanel panelNumeros;
-	private ArrayList<JRadioButton> listaOpciones;
 	private JPanel panelOperaciones;
 	private JPanel panelOpciones;
+	@SuppressWarnings("unused")
+	private final String[] OPCIONES_CALCULADORA = new String[] {"Decimal", "Binario", "Hexadecimal", "Octal"};
+	private ArrayList<JRadioButton> arrayJRadiosButtons;
 
 	public Ejer1() {
 		this.setLayout(new BorderLayout());
@@ -37,10 +42,14 @@ public class Ejer1 extends JFrame{
 		resultadoPanel.setLayout(new BorderLayout());
 		resultadoPanel.setPreferredSize(new Dimension(585, 100));
 		
-		textoResultado = new JLabel("0");
-		textoResultado.setFont(new Font("Arial", Font.BOLD, 32));
+		JTextField cajaDeTexto = new JTextField();
+		cajaDeTexto.setEditable(false);
+		cajaDeTexto.setText("0");
+		cajaDeTexto.setBackground(Color.ORANGE);
+		cajaDeTexto.setBorder(null);
+		cajaDeTexto.setFont(new Font("Arial", Font.BOLD, 32));
 	
-		resultadoPanel.add(textoResultado, BorderLayout.EAST);
+		resultadoPanel.add(cajaDeTexto, BorderLayout.EAST);
 		
 		this.add(resultadoPanel, BorderLayout.NORTH);
 		this.pack();
@@ -49,7 +58,7 @@ public class Ejer1 extends JFrame{
 		
 		panelNumeros = new JPanel();
 		panelNumeros.setVisible(true);
-		panelNumeros.setLayout(new GridLayout(4, 3));
+		panelNumeros.setLayout(new GridLayout(0, 3));
 		
 		for (int i = 0; i < 10; i++) {
 			JButton b = new JButton(Integer.toString(i));
@@ -59,23 +68,22 @@ public class Ejer1 extends JFrame{
 		this.add(panelNumeros, BorderLayout.CENTER);
 	
 		// panel radios - zona oeste
-		
-		listaOpciones = new ArrayList<JRadioButton>();
 		panelOpciones = new JPanel();
 		panelOpciones.setLayout(new BoxLayout(panelOpciones, BoxLayout.Y_AXIS));
-		JRadioButton def = new JRadioButton("Decimal");
-		def.setSelected (true);
-		listaOpciones.add(def);
-		listaOpciones.add(new JRadioButton("Binario"));
-		listaOpciones.add(new JRadioButton("Octal"));
-		listaOpciones.add(new JRadioButton("Hexadecimal"));
+
+		arrayJRadiosButtons = new ArrayList<JRadioButton>();
 		
 		ButtonGroup grupoOpciones = new ButtonGroup();
-		for (JRadioButton j : listaOpciones) {
-			grupoOpciones.add(j);
-			panelOpciones.add(j);
 
-		} 
+		for (int i = 0; i < OPCIONES_CALCULADORA.length; i++) {
+			JRadioButton b = new JRadioButton(OPCIONES_CALCULADORA[i]);
+			if(i == 0) b.setSelected(true);
+			arrayJRadiosButtons.add(b);
+			grupoOpciones.add(b);
+			panelOpciones.add(b);
+		}
+		
+		
 		
 		this.add(panelOpciones, BorderLayout.WEST);
 		
@@ -120,7 +128,7 @@ public class Ejer1 extends JFrame{
 	}
 	
 	public static void main(String[] args) {
-		Ejer1 a = new Ejer1();
+		new Ejer1();
 	}
 	
 }

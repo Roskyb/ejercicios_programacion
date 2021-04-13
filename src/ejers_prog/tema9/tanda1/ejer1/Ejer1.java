@@ -1,23 +1,24 @@
 package ejers_prog.tema9.tanda1.ejer1;
 
-import java.awt.Button;
 import java.awt.Checkbox;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Image;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JComponent;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
 public class Ejer1 extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6878577283399113759L;
 
 	private final Ciclo[] ciclos = new Ciclo[] { new Ciclo("Desarrollo de Aplicaciones Web", "GS"),
 			new Ciclo("Auxiliar Administrativo", "GM") };
@@ -125,7 +126,7 @@ public class Ejer1 extends JFrame {
 	}
 
 	public static void main(String[] args) {
-		Ejer1 a = new Ejer1();
+		new Ejer1();
 	}
 
 }

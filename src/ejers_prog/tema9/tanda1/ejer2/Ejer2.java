@@ -17,13 +17,18 @@ import javax.swing.JScrollPane;
 
 public class Ejer2 extends JFrame {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -276096341781405824L;
+
 	private Pato[] patitos = new Pato[] {
 		new Pato("DonaldDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD", 80),
 		new Pato("Roger", 180),
 		new Pato("Daysi", 70)
 	};
 	
-	private JList listaPatos;
+	private JList<Pato> listaPatos;
 	private JScrollPane panelPatos;
 	private JButton botonGuardar;
 	private JPanel panelCheckBox;
@@ -39,8 +44,8 @@ public class Ejer2 extends JFrame {
 		listaPatos.setSelectionMode(0);
 		listaPatos.setBackground(Color.PINK);
 		panelPatos = new JScrollPane(listaPatos);
-		panelPatos.setHorizontalScrollBarPolicy(panelPatos.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		panelPatos.setVerticalScrollBarPolicy(panelPatos.VERTICAL_SCROLLBAR_ALWAYS);
+		panelPatos.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		panelPatos.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		
 		panelPatos.setLocation(50, 50);
 		panelPatos.setSize(200, 200);
@@ -82,9 +87,6 @@ public class Ejer2 extends JFrame {
 		this.add(panelCheckBox);
 		
 		
-		
-		
-		
 		// general
 		this.setTitle("ALIMENTA A TUS PATOS");
 		this.setLayout(null);
@@ -112,10 +114,11 @@ public class Ejer2 extends JFrame {
 				line = bf.readLine();
 			}
 			
+			bf.close();
+			
 		} catch (FileNotFoundException e) {
 			System.out.println("El archivo no se ha podido encontrar");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			System.out.println("Error de lectura");
 		}
 		
@@ -127,7 +130,7 @@ public class Ejer2 extends JFrame {
 	}
 	
 	public static void main(String[] args) {
-		Ejer2 a = new Ejer2();
+		new Ejer2();
 	}
 	
 }
