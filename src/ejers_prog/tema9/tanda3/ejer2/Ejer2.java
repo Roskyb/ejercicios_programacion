@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 
-public class Ejer3 extends JFrame{
+public class Ejer2 extends JFrame{
 
 	private JButton[] arrBotones;
 	private ArrayList<JLabel> arrlEtiquetas;
@@ -31,7 +31,7 @@ public class Ejer3 extends JFrame{
 	private final int N = 8;
 
 	
-	public Ejer3() {
+	public Ejer2() {
 
 		this.setLayout(new FlowLayout());
 		dibujarPanel();
@@ -58,14 +58,20 @@ public class Ejer3 extends JFrame{
 			int n = Integer.parseInt(boton.getText());
 			int x = (int) (Math.random()*10) + 1;
 			int result = n * x;
+		
 			
-			String userInput = JOptionPane.showInputDialog(n + "x" + x);
-			if(Integer.parseInt(userInput) == result) {
-				boton.setEnabled(false);
-				int i = n-2;
-				arrlEtiquetas.get(i).setIcon(redim("img/correcto.png", 30, 30));;
+			try {
+				String userInput = JOptionPane.showInputDialog(n + "x" + x);
+				if(Integer.parseInt(userInput) == result) {
+					boton.setEnabled(false);
+					int i = n-2;
+					arrlEtiquetas.get(i).setIcon(redim("img/correcto.png", 30, 30));;
 
+				}
+			} catch (Exception e2) {
+				System.err.println("El input del usuario no es un numero");
 			}
+			
 			
 			
 			
@@ -129,7 +135,7 @@ public class Ejer3 extends JFrame{
 	}
 
 	public static void main(String[] args) {
-		new Ejer3();
+		new Ejer2();
 	}
 	
 }
