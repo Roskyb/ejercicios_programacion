@@ -1,9 +1,12 @@
 package ejers_prog.tema9.tanda4.ejer4;
 
 import java.io.File;
+import java.io.Serializable;
 
-public class Imagen {
+public class Imagen implements Serializable{
 
+
+	private static final long serialVersionUID = -4819562631240894923L;
 	private String nombreArchivo;
 	private long tamanioBytes;
 	private String extension;

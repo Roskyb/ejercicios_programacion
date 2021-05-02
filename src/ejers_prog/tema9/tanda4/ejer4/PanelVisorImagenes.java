@@ -37,18 +37,19 @@ public class PanelVisorImagenes extends JPanel {
 	}
 
 	private void eventos() {
+
 		comboDatosImagen.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-
+				
 				Imagen img = (Imagen) modeloImagenes.getSelectedItem();
 				if (!(img == null)) {
 					panelCentral.remove(labelEleccion);
 					if (labelImagen != null) {
 						panelCentral.remove(labelImagen);
 					}
-
+					
 					labelImagen = new JLabel(redim(img.getRutaArchivo(), 100, 200));
 					panelCentral.add(labelImagen);
 					repaint();
@@ -72,12 +73,12 @@ public class PanelVisorImagenes extends JPanel {
 				public void actionPerformed(ActionEvent e) {
 					JCheckBox check = (JCheckBox) e.getSource();
 					String extension = check.getText();
-					System.out.println("dd");
+
 					if (check.isSelected()) {
-						ArrayList<Imagen> imagenes = imagenseDeExtension(extension);
+						ArrayList<Imagen> imagenes = imagenesDeExtension(extension);
 						modeloImagenes.addAll(imagenes);
 					} else {
-						ArrayList<Imagen> imagenes = imagenseDeExtension(extension);
+						ArrayList<Imagen> imagenes = imagenesDeExtension(extension);
 						for (Imagen imagen : imagenes) {
 							modeloImagenes.removeElement(imagen);
 						}
@@ -89,13 +90,12 @@ public class PanelVisorImagenes extends JPanel {
 
 	}
 
-	private ArrayList<Imagen> imagenseDeExtension(String extension) {
+	private ArrayList<Imagen> imagenesDeExtension(String extension) {
 		ArrayList<Imagen> imagenes = todasImagenes(this.directorio);
 		for (Iterator<Imagen> iterator = imagenes.iterator(); iterator.hasNext();) {
 			Imagen imagen = iterator.next();
 			if (!imagen.getExtension().equals(extension)) {
 				iterator.remove();
-			} else {
 			}
 		}
 		return imagenes;
