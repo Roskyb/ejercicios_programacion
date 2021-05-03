@@ -77,13 +77,12 @@ public class Ejer1 extends JFrame implements MouseListener{
 						line = bf.readLine();
 					}
 					bf.close();
-					
+					System.out.println();
 					return puntos;
 					
 				} catch (FileNotFoundException e) {
 					System.err.println("No se ha encontrado el archivo");
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				
@@ -113,7 +112,6 @@ public class Ejer1 extends JFrame implements MouseListener{
 
 
 	private void dibujarPanelOeste() {
-		// TODO Auto-generated method stub
 		panelOeste = new JPanel(new GridLayout(3,1, 1, 1));
 
 

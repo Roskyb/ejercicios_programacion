@@ -111,7 +111,6 @@ public class Ejer4 extends JFrame {
 
 						Imagen img = (Imagen) ois.readObject();
 						while (img != null) {
-							System.out.println("jheljfdsa");
 							modeloListaImagenes.addElement(img);
 							img = (Imagen) ois.readObject();
 						}
