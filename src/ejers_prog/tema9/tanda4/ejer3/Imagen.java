@@ -13,7 +13,7 @@ public class Imagen {
 		this.rutaArchivo = archivoImagen.getAbsolutePath();
 		this.nombreArchivo = archivoImagen.getName();
 		this.tamanioBytes = archivoImagen.length();
-		this.extension = this.nombreArchivo.substring(this.nombreArchivo.indexOf(".") + 1);
+		this.extension = this.nombreArchivo.substring(this.nombreArchivo.lastIndexOf(".") + 1);
 	}
 
 
@@ -24,7 +24,7 @@ public class Imagen {
 
 	@Override
 	public String toString() {
-		double kb = tamanioBytes / 1024;
+		double kb = tamanioBytes / 1000;
 		return this.nombreArchivo + " (" + kb + "Kb, " + this.tamanioBytes + "bytes.)";
 	}
 
@@ -62,7 +62,7 @@ public class Imagen {
 				return false;
 		} else if (!extension.equals(other.extension))
 			return false;
-		return true;
+		return !true;
 	}
 	
 

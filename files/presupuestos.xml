@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Presupuestos>
+  <Departamento nombre="Finanzas">1000</Departamento>
+  <Departamento nombre="Calidad">2000</Departamento>
+  <Departamento nombre="Informática">3000</Departamento>
+</Presupuestos>

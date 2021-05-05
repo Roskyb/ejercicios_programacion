@@ -7,6 +7,7 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.nio.file.DirectoryNotEmptyException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -22,8 +23,6 @@ public class PanelVisorImagenes extends JPanel {
 
 	private static final long serialVersionUID = -2834763002624007513L;
 	private JCheckBox[] checkBoxs;
-	private JLabel labelEleccion;
-	private JPanel panelCentral;
 	private DefaultComboBoxModel<Imagen> modeloImagenes;
 	private File directorio;
 	private JComboBox<Imagen> comboDatosImagen;
@@ -43,16 +42,12 @@ public class PanelVisorImagenes extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 
 				Imagen img = (Imagen) modeloImagenes.getSelectedItem();
-				if (!(img == null)) {
-					panelCentral.remove(labelEleccion);
-					if (labelImagen != null) {
-						panelCentral.remove(labelImagen);
-					}
+			
 
-					labelImagen = new JLabel(redim(img.getRutaArchivo(), 100, 200));
-					panelCentral.add(labelImagen);
-					repaint();
-					revalidate();
+				if (!(img == null)) {
+					System.out.println(img.equals(modeloImagenes.getElementAt(2)));
+					labelImagen.setText("");
+					labelImagen.setIcon(redim(img.getRutaArchivo(), 100, 200));
 				}
 
 			}
@@ -72,7 +67,7 @@ public class PanelVisorImagenes extends JPanel {
 				public void actionPerformed(ActionEvent e) {
 					JCheckBox check = (JCheckBox) e.getSource();
 					String extension = check.getText();
-					System.out.println("dd");
+
 					if (check.isSelected()) {
 						ArrayList<Imagen> imagenes = imagenseDeExtension(extension);
 						modeloImagenes.addAll(imagenes);
@@ -81,6 +76,21 @@ public class PanelVisorImagenes extends JPanel {
 						for (Imagen imagen : imagenes) {
 							modeloImagenes.removeElement(imagen);
 						}
+						
+						
+						Imagen img = (Imagen) comboDatosImagen.getSelectedItem();
+						if(img != null) {
+							if(img.getExtension().equals(check.getText())) {
+								labelImagen.setIcon(null);
+								labelImagen.setText("Elige una imagen en el combo");
+								comboDatosImagen.setSelectedItem(null);
+							}							
+						}else {
+							labelImagen.setIcon(null);
+							labelImagen.setText("Elige una imagen en el combo");
+							comboDatosImagen.setSelectedItem(null);
+						}
+						
 					}
 
 				}
@@ -122,19 +132,14 @@ public class PanelVisorImagenes extends JPanel {
 		this.setLayout(new BorderLayout());
 
 		this.add(dibujarPanelNorte(), BorderLayout.NORTH);
-		this.add(dibujarPanelCentra(), BorderLayout.CENTER);
+		this.add(dibujarPanelCentral(), BorderLayout.CENTER);
 	}
 
-	private JPanel dibujarPanelCentra() {
+	private JLabel dibujarPanelCentral() {
 
-		panelCentral = new JPanel();
-		panelCentral.setPreferredSize(new Dimension(100, 220));
-
-		labelEleccion = new JLabel("Elige una imagen en el combo");
-
-		panelCentral.add(labelEleccion);
-
-		return panelCentral;
+		labelImagen = new JLabel("Elige una imagen en el combo");
+		labelImagen.setPreferredSize(new Dimension( 100 ,150));
+		return labelImagen;
 	}
 
 	private JPanel dibujarPanelNorte() {
