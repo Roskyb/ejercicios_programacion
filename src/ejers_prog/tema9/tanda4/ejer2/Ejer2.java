@@ -101,7 +101,7 @@ public class Ejer2 extends JFrame  implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JButton botonPulsado = (JButton) e.getSource();
-		
+		if(textArea.getText().length() == 0) return;
 		switch (botonPulsado.getText()) {
 		case "VACIAR":
 			textArea.setText("");

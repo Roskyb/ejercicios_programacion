@@ -8,6 +8,7 @@ import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -15,17 +16,22 @@ import javax.swing.JRadioButton;
 import javax.swing.JTextArea;
 import javax.swing.border.Border;
 
-public class DialogTipoMayuscula extends JFrame implements ActionListener{
+public class DialogTipoMayuscula extends JDialog implements ActionListener{
 
 
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2907918231196460573L;
 	private JRadioButton[] opciones;
 	private JPanel panel;
 	private ButtonGroup bg;
 	private JTextArea panelMayusculas; 
 
 	public DialogTipoMayuscula(JTextArea panelMayusculas) {
-		this.add(dibujarPanel());
+		this.dibujarPanel();
+		this.add(panel);
 		this.pack();
 		this.setVisible(false);
 		this.panelMayusculas = panelMayusculas;
@@ -38,7 +44,7 @@ public class DialogTipoMayuscula extends JFrame implements ActionListener{
 		}
 	}
 
-	private JPanel dibujarPanel() {
+	private void dibujarPanel() {
 
 		panel = new JPanel();
 		getPanel().setLayout(new BoxLayout(getPanel(), BoxLayout.Y_AXIS));
@@ -65,7 +71,6 @@ public class DialogTipoMayuscula extends JFrame implements ActionListener{
 		
 		eventos();
 			
-		return getPanel();
 	}
 
 	public JPanel getPanel() {
@@ -84,13 +89,29 @@ public class DialogTipoMayuscula extends JFrame implements ActionListener{
 			
 		case "Cambiar a mayusculas":
 			
-			texto = texto.substring(0, 1).toUpperCase() + texto.substring(1);
+			String[] frases = texto.split("\\. ");
+			System.out.println(frases.length);
+			
+			texto = "";
+			for (int i = 0; i < frases.length; i++) {
+				String frase = frases[i];
+				texto += frase.substring(0, 1).toUpperCase() + frase.substring(1) + "";
+				if(!frase.endsWith(".")) {
+					if(i < frases.length - 1) texto += ". ";
+					else texto+= ".";					
+				}
+				
+			}
+
 			panelMayusculas.setText(texto);
+			
+			break;
 			
 		case "Cambiar A Mayusculas":
 			
 			String[] palabras = texto.split("\\s");
 			String nuevoTexto = "";
+			
 			for (String string : palabras) {
 				nuevoTexto += string.substring(0, 1).toUpperCase() + string.substring(1) + " ";
 			}

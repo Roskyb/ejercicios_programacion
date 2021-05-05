@@ -87,15 +87,12 @@ public class VentanaEcuacion extends JFrame implements ActionListener {
 
 	private SolucionCuadratica solucion(int a , int b, int c) throws RaizExcepcion {
 		
+		if(a == 0) throw new RaizExcepcion("Solución no cuadratica");
+		if((4*a*c) < 0) throw new RaizExcepcion("Solución imaginaria");
 		
         double x1 = (-b + Math.sqrt((b*b)-(4*a*c)))/(2*a);
         double x2 = (-b - Math.sqrt((b*b)-(4*a*c)))/(2*a);
         
-        if(Double.isNaN(x1) || Double.isNaN(x2)) throw new RaizExcepcion("Solución imaginaria");
-        
-        
-        System.out.println(x1 + ", " + x2);
-
         return new SolucionCuadratica(x1, x2);
 		
 	}
