@@ -1,18 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<vuelos>
-	<vuelo id="ib1000">
-		<origen>Madrid</origen>
-		<destino>Londres</destino>
-		<hora>14:40</hora>
-	</vuelo>
-		<vuelo id="ib2000">
-		<origen>Vitoria</origen>
-		<destino>Luxemburgo</destino>
-		<hora>12:40</hora>
-	</vuelo>
-		<vuelo id="ib3000">
-		<origen>Madrid</origen>
-		<destino>Londres</destino>
-		<hora>13:40</hora>
-	</vuelo>
-</vuelos>
+<cine>
+	<pelicula sala="1">
+		<titulo>Los gracisos</titulo>
+		<genero>Comedia</genero>
+		<duracion>
+			<horas>2</horas>
+			<minutos>20</minutos>
+			<segundos>18</segundos>
+		</duracion>
+	</pelicula>
+	
+	<pelicula sala="2">
+		<titulo>Los malditos</titulo>
+		<genero>Terror</genero>
+		<duracion>
+			<horas>1</horas>
+			<minutos>56</minutos>
+			<segundos>8</segundos>
+		</duracion>
+	</pelicula>
+	
+	<pelicula sala="3">
+		<titulo>Los desgraciados</titulo>
+		<genero>Drama</genero>
+		<duracion>
+			<horas>2</horas>
+			<minutos>10</minutos>
+			<segundos>18</segundos>
+		</duracion>
+	</pelicula>
+	
+		<pelicula sala="4">
+		<titulo>Los Condenados</titulo>
+		<genero>Drama</genero>
+		<duracion>
+			<horas>2</horas>
+			<minutos>10</minutos>
+			<segundos>18</segundos>
+		</duracion>
+	</pelicula>
+	
+	<pelicula sala="5">
+		<genero>Drama</genero>
+		<duracion>
+			<horas>2</horas>
+			<minutos>10</minutos>
+			<segundos>18</segundos>
+		</duracion>
+	</pelicula>
+</cine>

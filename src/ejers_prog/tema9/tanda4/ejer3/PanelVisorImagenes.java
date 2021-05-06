@@ -45,7 +45,6 @@ public class PanelVisorImagenes extends JPanel {
 			
 
 				if (!(img == null)) {
-					System.out.println(img.equals(modeloImagenes.getElementAt(2)));
 					labelImagen.setText("");
 					labelImagen.setIcon(redim(img.getRutaArchivo(), 100, 200));
 				}
@@ -73,6 +72,7 @@ public class PanelVisorImagenes extends JPanel {
 						modeloImagenes.addAll(imagenes);
 					} else {
 						ArrayList<Imagen> imagenes = imagenseDeExtension(extension);
+						System.out.println("dfkas");
 						for (Imagen imagen : imagenes) {
 							modeloImagenes.removeElement(imagen);
 						}
@@ -105,8 +105,7 @@ public class PanelVisorImagenes extends JPanel {
 			Imagen imagen = iterator.next();
 			if (!imagen.getExtension().equals(extension)) {
 				iterator.remove();
-			} else {
-			}
+			} 
 		}
 		return imagenes;
 	}
