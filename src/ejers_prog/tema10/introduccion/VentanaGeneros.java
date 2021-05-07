@@ -82,7 +82,7 @@ public class VentanaGeneros extends JFrame {
 				ArrayList<Pelicula> pelis = gestor.pelisGenero(genero);
 				
 				for (Pelicula pelicula : pelis) {
-					JRadioButton JRadioButton = new JRadioButton("opcion1");
+				
 				}
 				
 				JButton botonComprar = new JButton("Comprar");

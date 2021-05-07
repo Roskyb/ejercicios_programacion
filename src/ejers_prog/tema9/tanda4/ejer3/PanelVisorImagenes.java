@@ -72,20 +72,20 @@ public class PanelVisorImagenes extends JPanel {
 						modeloImagenes.addAll(imagenes);
 					} else {
 						ArrayList<Imagen> imagenes = imagenseDeExtension(extension);
-						System.out.println("dfkas");
+
 						for (Imagen imagen : imagenes) {
 							modeloImagenes.removeElement(imagen);
-						}
-						
+ 						}
 						
 						Imagen img = (Imagen) comboDatosImagen.getSelectedItem();
-						if(img != null) {
-							if(img.getExtension().equals(check.getText())) {
+						if (img != null) {
+
+							if (img.getExtension().equals(check.getText())) {
 								labelImagen.setIcon(null);
 								labelImagen.setText("Elige una imagen en el combo");
 								comboDatosImagen.setSelectedItem(null);
-							}							
-						}else {
+							}
+						} else {
 							labelImagen.setIcon(null);
 							labelImagen.setText("Elige una imagen en el combo");
 							comboDatosImagen.setSelectedItem(null);

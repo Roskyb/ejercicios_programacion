@@ -23,27 +23,13 @@ public class Imagen {
 
 
 	@Override
-	public String toString() {
-		double kb = tamanioBytes / 1000;
-		return this.nombreArchivo + " (" + kb + "Kb, " + this.tamanioBytes + "bytes.)";
-	}
-
-
-	public String getRutaArchivo() {
-		return rutaArchivo;
-	}
-
-
-	public String getExtension() {
-		return extension;
-	}
-
-
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((extension == null) ? 0 : extension.hashCode());
+		result = prime * result + ((nombreArchivo == null) ? 0 : nombreArchivo.hashCode());
+		result = prime * result + ((rutaArchivo == null) ? 0 : rutaArchivo.hashCode());
+		result = prime * result + (int) (tamanioBytes ^ (tamanioBytes >>> 32));
 		return result;
 	}
 
@@ -62,9 +48,40 @@ public class Imagen {
 				return false;
 		} else if (!extension.equals(other.extension))
 			return false;
-		return !true;
+		if (nombreArchivo == null) {
+			if (other.nombreArchivo != null)
+				return false;
+		} else if (!nombreArchivo.equals(other.nombreArchivo))
+			return false;
+		if (rutaArchivo == null) {
+			if (other.rutaArchivo != null)
+				return false;
+		} else if (!rutaArchivo.equals(other.rutaArchivo))
+			return false;
+		if (tamanioBytes != other.tamanioBytes)
+			return false;
+		return true;
 	}
-	
+
+
+	@Override
+	public String toString() {
+		double kb = tamanioBytes / 1000;
+		return this.nombreArchivo + " (" + kb + "Kb, " + this.tamanioBytes + "bytes.)";
+	}
+
+
+	public String getRutaArchivo() {
+		return rutaArchivo;
+	}
+
+
+	public String getExtension() {
+		return extension;
+	}
+
+
+
 
 	
 	
