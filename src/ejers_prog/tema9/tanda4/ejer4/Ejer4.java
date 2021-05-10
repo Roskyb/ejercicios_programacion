@@ -149,9 +149,11 @@ public class Ejer4 extends JFrame {
 					String nombre = JOptionPane.showInputDialog("Si quieres guardar el album introduce tu nombre");
 					File f = new File("files/albumnes/" + nombre + "_album.obj");
 					if (f.exists()) {
-						int res = JOptionPane.showConfirmDialog(null, "El album ya existe, quieres sobreescribirlo?");
-						if (res == 0) {
-							crearArchivoAlbum(f);
+						if(nombre != null) {
+							int res = JOptionPane.showConfirmDialog(null, "El album ya existe, quieres sobreescribirlo?");
+							if (res == 0) {
+								crearArchivoAlbum(f);
+							}							
 						}
 					} else {
 						crearArchivoAlbum(f);

@@ -5,7 +5,9 @@ import java.io.Serializable;
 
 public class Imagen implements Serializable{
 
-
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = -4819562631240894923L;
 	private String nombreArchivo;
 	private long tamanioBytes;
@@ -16,7 +18,7 @@ public class Imagen implements Serializable{
 		this.rutaArchivo = archivoImagen.getAbsolutePath();
 		this.nombreArchivo = archivoImagen.getName();
 		this.tamanioBytes = archivoImagen.length();
-		this.extension = this.nombreArchivo.substring(this.nombreArchivo.indexOf(".") + 1);
+		this.extension = this.nombreArchivo.substring(this.nombreArchivo.lastIndexOf(".") + 1);
 	}
 
 
@@ -26,27 +28,13 @@ public class Imagen implements Serializable{
 
 
 	@Override
-	public String toString() {
-		double kb = tamanioBytes / 1024;
-		return this.nombreArchivo + " (" + kb + "Kb, " + this.tamanioBytes + "bytes.)";
-	}
-
-
-	public String getRutaArchivo() {
-		return rutaArchivo;
-	}
-
-
-	public String getExtension() {
-		return extension;
-	}
-
-
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((extension == null) ? 0 : extension.hashCode());
+		result = prime * result + ((nombreArchivo == null) ? 0 : nombreArchivo.hashCode());
+		result = prime * result + ((rutaArchivo == null) ? 0 : rutaArchivo.hashCode());
+		result = prime * result + (int) (tamanioBytes ^ (tamanioBytes >>> 32));
 		return result;
 	}
 
@@ -65,9 +53,40 @@ public class Imagen implements Serializable{
 				return false;
 		} else if (!extension.equals(other.extension))
 			return false;
+		if (nombreArchivo == null) {
+			if (other.nombreArchivo != null)
+				return false;
+		} else if (!nombreArchivo.equals(other.nombreArchivo))
+			return false;
+		if (rutaArchivo == null) {
+			if (other.rutaArchivo != null)
+				return false;
+		} else if (!rutaArchivo.equals(other.rutaArchivo))
+			return false;
+		if (tamanioBytes != other.tamanioBytes)
+			return false;
 		return true;
 	}
-	
+
+
+	@Override
+	public String toString() {
+		double kb = tamanioBytes / 1000;
+		return this.nombreArchivo + " (" + kb + "Kb, " + this.tamanioBytes + "bytes.)";
+	}
+
+
+	public String getRutaArchivo() {
+		return rutaArchivo;
+	}
+
+
+	public String getExtension() {
+		return extension;
+	}
+
+
+
 
 	
 	
