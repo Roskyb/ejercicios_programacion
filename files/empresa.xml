@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<departamentos>
+  <Departamento nombre="ventas">
+    <facturacion>100000</facturacion>
+  </Departamento>
+  <Departamento nombre="facturacion">
+    <facturacion>20000</facturacion>
+  </Departamento>
+  <Departamento nombre="informatica">
+    <facturacion>30000</facturacion>
+  </Departamento>
+</departamentos>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<companias>
+  <compania id="ib">
+    <Vuelo id="ib8040" hora="12:50">
+      <destino>Lisboa</destino>
+    </Vuelo>
+    <Vuelo id="ib7040" hora="11:30">
+      <destino>copenhague</destino>
+    </Vuelo>
+    <Vuelo id="ib1212" hora="11:15">
+      <destino>Sevilla</destino>
+    </Vuelo>
+    <Vuelo id="ib8344" hora="18:15">
+      <destino>NY</destino>
+    </Vuelo>
+    <Vuelo id="ib5209" hora="13:30">
+      <destino>Frankfurt</destino>
+    </Vuelo>
+  </compania>
+  <compania id="lu">
+    <Vuelo id="lu5309" hora="13:30">
+      <destino>Frankfurt</destino>
+    </Vuelo>
+  </compania>
+</companias>

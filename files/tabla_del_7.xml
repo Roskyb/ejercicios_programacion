@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tabla num="7">
+  <factor f="1">
+    <resultado>7</resultado>
+  </factor>
+  <factor f="2">
+    <resultado>14</resultado>
+  </factor>
+  <factor f="3">
+    <resultado>21</resultado>
+  </factor>
+  <factor f="4">
+    <resultado>28</resultado>
+  </factor>
+  <factor f="5">
+    <resultado>35</resultado>
+  </factor>
+  <factor f="6">
+    <resultado>42</resultado>
+  </factor>
+  <factor f="7">
+    <resultado>49</resultado>
+  </factor>
+  <factor f="8">
+    <resultado>56</resultado>
+  </factor>
+  <factor f="9">
+    <resultado>63</resultado>
+  </factor>
+  <factor f="10">
+    <resultado>70</resultado>
+  </factor>
+</tabla>

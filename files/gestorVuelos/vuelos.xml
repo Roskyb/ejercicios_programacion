@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vuelos>
+  <vuelo id="ib8040" hora="12:50">
+    <origen>Madrid</origen>
+    <destino>Lisboa</destino>
+  </vuelo>
+  <vuelo id="ib7040" hora="11:30">
+    <origen>Madrid</origen>
+    <destino>copenhague</destino>
+  </vuelo>
+  <vuelo id="ib1212" hora="11:15">
+    <origen>Bilbao</origen>
+    <destino>Sevilla</destino>
+  </vuelo>
+  <vuelo id="ib8344" hora="18:15">
+    <origen>Atenas</origen>
+    <destino>NY</destino>
+  </vuelo>
+  <vuelo id="lu5309" hora="13:30">
+    <origen>Bilbao</origen>
+    <destino>Frankfurt</destino>
+  </vuelo>
+  <vuelo id="ib5209" hora="13:30">
+    <origen>Bilbao</origen>
+    <destino>Frankfurt</destino>
+  </vuelo>
+</vuelos>
