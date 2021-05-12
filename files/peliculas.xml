@@ -8,12 +8,8 @@
 			<minutos>20</minutos>
 			<segundos>18</segundos>
 			<entradas>
-				<asientos>
-					10
-				</asientos>
-				<asientos>
-					12
-				</asientos>
+				<asientos>10</asientos>
+				<asientos>12</asientos>
 			</entradas>
 		</duracion>
 	</pelicula>
@@ -26,12 +22,10 @@
 			<minutos>56</minutos>
 			<segundos>8</segundos>
 		</duracion>
-		<asientos>
-			10
-		</asientos>
-		<asientos>
-			12
-		</asientos>
+		<entradas>
+			<asientos>10</asientos>
+			<asientos>2</asientos>
+		</entradas>
 	</pelicula>
 
 	<pelicula sala="3">
@@ -43,12 +37,7 @@
 			<segundos>18</segundos>
 
 		</duracion>
-		<asientos>
-			10
-		</asientos>
-		<asientos>
-			12
-		</asientos>
+
 	</pelicula>
 
 	<pelicula sala="4">
@@ -59,26 +48,20 @@
 			<minutos>10</minutos>
 			<segundos>18</segundos>
 		</duracion>
-		<asientos>
-			10
-		</asientos>
-		<asientos>
-			12
-		</asientos>
+
 	</pelicula>
 
 	<pelicula sala="5">
-		<genero>Drama</genero>
+	<titulo>Divina Comedia</titulo>
+		<genero>Comedia</genero>
 		<duracion>
 			<horas>2</horas>
 			<minutos>10</minutos>
 			<segundos>18</segundos>
 		</duracion>
-		<asientos>
-			10
-		</asientos>
-		<asientos>
-			12
-		</asientos>
+		<entradas>
+			<asientos>10</asientos>
+			<asientos>1</asientos>
+		</entradas>
 	</pelicula>
 </cine>

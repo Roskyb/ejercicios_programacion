@@ -11,10 +11,7 @@ import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JList;
 import javax.swing.JRadioButton;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
-import com.sun.jdi.JDIPermission;
 
 public class VentanaGeneros extends JFrame {
 
