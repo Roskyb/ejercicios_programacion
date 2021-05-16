@@ -24,6 +24,8 @@ public class Plato {
 		this.rutaImagen = rutaImagen;
 		this.tipo = tipo;
 	}
+	
+	
 
 	@Override
 	public String toString() {
@@ -32,6 +34,18 @@ public class Plato {
 
 	public String getNombre() {
 		return nombre;
+	}
+
+	public double getPrecio() {
+		return precio;
+	}
+
+	public String getRutaImagen() {
+		return  rutaImagen;
+	}
+
+	public String getTipo() {
+		return tipo;
 	}
 	
 	

@@ -2,11 +2,11 @@
 <platos>
 	<plato tipo="principal" nombre="Lamb chops">
 		<precio>14.2</precio>
-		<imagen>lch.png</imagen>
+
 	</plato>
 	<plato tipo="primero" nombre="Grilled veg">
 		<precio>8.5</precio>
-		<imagen>firsts/grill1.jpg</imagen>
+		
 	</plato>
 	<plato tipo="adicional" nombre="Wine">
 		<precio>2</precio>
@@ -23,13 +23,13 @@
 	<plato tipo="adicional" nombre="Kas Naranja">
 		<precio>1.5</precio>
 	</plato>
-	<plato tipo="principal" nombre="Bocata mandarinas">
+	<plato tipo="principal" nombre="Bocata naranjas">
 		<precio>10.2</precio>
-		<imagen>bocataMandarinas.png</imagen>
+		<imagen>img/platos/bocatanaranjas.jpg</imagen>
 	</plato>
 	<plato tipo="primero" nombre="Constilla de cerdo">
 		<precio>20.5</precio>
-		<imagen>firsts/grill1.jpg</imagen>
+	
 	</plato>
 	<plato tipo="adicional" nombre="Manaos">
 		<precio>2</precio>
