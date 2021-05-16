@@ -8,7 +8,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
-import org.jdom2.Content;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
@@ -239,18 +238,16 @@ public class GestorVuelos {
 
 	public static void main(String[] args) {
 		GestorVuelos a = new GestorVuelos("vuelos.xml");
-//		a.destinosDirectosDesde("Madrid");
+		a.destinosDirectosDesde("Madrid").forEach(e -> System.out.println(e));
 		
-//		a.vuelosPosterioresA("18:00");
+
+		a.nuevoVuelo("ib7777", "Vitoria", "Swaziland", new int[] {19, 30}, false);
 		
-//		a.nuevoVuelo("ib7777", "Vitoria", "Swaziland", new int[] {19, 30}, false);
-//		
-//		
-//		System.out.println(a.borrarVuelo("ib7777"));
-//		
-//		a.vuelosPosterioresA("18:00");
-//		a.vuelosConDestino("Frankfurt");
-//		a.crearFicheroCompanias();
+		System.out.println(a.borrarVuelo("ib7777"));
+		
+		a.vuelosPosterioresA("18:00");
+		a.vuelosConDestino("Frankfurt");
+		a.crearFicheroCompanias();
 		a.cambiarEstructura();
 	}
 	

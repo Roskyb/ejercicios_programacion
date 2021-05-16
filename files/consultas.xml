@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<consultas>
+  <medico nombre="Dr Saez">
+    <consulta>
+      <hora>9:00</hora>
+      <paciente>JORGE</paciente>
+    </consulta>
+    <consulta>
+      <hora>9:30</hora>
+      <paciente>JORGE</paciente>
+    </consulta>
+    <consulta>
+      <hora>10:00</hora>
+      <paciente>JORGE</paciente>
+    </consulta>
+    <consulta>
+      <hora>10:30</hora>
+      <paciente>JORGE</paciente>
+    </consulta>
+    <consulta>
+      <hora>11:00</hora>
+      <paciente>JORGE</paciente>
+    </consulta>
+    <consulta>
+      <hora>11:30</hora>
+      <paciente>JORGE</paciente>
+    </consulta>
+    <consulta>
+      <hora>12:00</hora>
+      <paciente>JORGE</paciente>
+    </consulta>
+    <consulta>
+      <hora>12:30</hora>
+      <paciente>JORGE</paciente>
+    </consulta>
+    <consulta>
+      <hora>13:00</hora>
+      <paciente>JORGE</paciente>
+    </consulta>
+    <consulta>
+      <hora>13:30</hora>
+      <paciente>JORGE</paciente>
+    </consulta>
+    <consulta>
+      <hora>14:00</hora>
+      <paciente>JORGE</paciente>
+    </consulta>
+    <consulta>
+      <hora>14:30</hora>
+      <paciente>JORGE</paciente>
+    </consulta>
+    <consulta>
+      <hora>15:00</hora>
+      <paciente>JORGE</paciente>
+    </consulta>
+    <consulta>
+      <hora>15:30</hora>
+      <paciente>JORGE</paciente>
+    </consulta>
+  </medico>
+  <medico nombre="Dra Artea" />
+  <medico nombre="Dr Cabeza" />
+  <medico nombre="Dra Kholn" />
+</consultas>

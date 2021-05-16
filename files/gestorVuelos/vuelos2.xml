@@ -27,7 +27,6 @@
 		<destino>Frankfurt</destino>
 		<hora>13:30</hora>
 	</vuelo>
-	
 		<vuelo id="ib5209">
 		<origen>Bilbao</origen>
 		<destino>Frankfurt</destino>

@@ -22,4 +22,9 @@
       <destino>Frankfurt</destino>
     </Vuelo>
   </compania>
+  <compania id="ra">
+    <Vuelo id="ra5209" hora="13:30">
+      <destino>Palma</destino>
+    </Vuelo>
+  </compania>
 </companias>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<platos>
+	<plato tipo="principal" nombre="Lamb chops">
+		<precio>14.2</precio>
+		<imagen>lch.png</imagen>
+	</plato>
+	<plato tipo="primero" nombre="Grilled veg">
+		<precio>8.5</precio>
+		<imagen>firsts/grill1.jpg</imagen>
+	</plato>
+	<plato tipo="adicional" nombre="Wine">
+		<precio>2</precio>
+	</plato>
+	<plato tipo="primero" nombre="Arroz cubano">
+		<precio>8.5</precio>
+	</plato>
+	<plato tipo="adicional" nombre="Coca Cola">
+		<precio>2</precio>
+	</plato>
+	<plato tipo="adicional" nombre="Pepsi">
+		<precio>2</precio>
+	</plato>
+	<plato tipo="adicional" nombre="Kas Naranja">
+		<precio>1.5</precio>
+	</plato>
+	<plato tipo="principal" nombre="Bocata mandarinas">
+		<precio>10.2</precio>
+		<imagen>bocataMandarinas.png</imagen>
+	</plato>
+	<plato tipo="primero" nombre="Constilla de cerdo">
+		<precio>20.5</precio>
+		<imagen>firsts/grill1.jpg</imagen>
+	</plato>
+	<plato tipo="adicional" nombre="Manaos">
+		<precio>2</precio>
+	</plato>
+
+</platos>

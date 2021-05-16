@@ -24,4 +24,8 @@
     <origen>Bilbao</origen>
     <destino>Frankfurt</destino>
   </vuelo>
+  <vuelo id="ra5209" hora="13:30">
+    <origen>Vitoria</origen>
+    <destino>Palma</destino>
+  </vuelo>
 </vuelos>
