@@ -7,5 +7,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="D:/dw1/Prog/ejercicios_prog/ejers_prog/jdom-2.0.6.jar"/>
+	<classpathentry kind="lib" path="D:/jorge/Descargas/mysql-connector-java-5.1.49.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

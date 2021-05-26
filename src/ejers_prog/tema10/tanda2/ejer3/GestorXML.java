@@ -108,46 +108,16 @@ public class GestorXML {
 			}
 			
 			if(ePedidosFecha != null) {
-				Element ePedido = new Element("pedido");
+				Element ePedido = crearElementoPedido(primero, principal, adicionales);
 				ePedidosFecha.addContent(ePedido);
-				
-				Element ePrimero = new Element("primero").setText(primero);
-				Element ePrincipal = new Element("principal").setText(principal);
-				
-				ePedido.addContent(ePrimero);
-				ePedido.addContent(ePrincipal);
-				
-				if(adicionales.length > 0 ) {
-					Element eAdicionales = new Element("adicionales");
-					for (String adic : adicionales) {
-						Element eAdicional = new Element("adicional").setText(adic);
-						eAdicionales.addContent(eAdicional);
-					}
-					ePedido.addContent(eAdicionales);
-				}
 			}else {
 				
 				Element ePedidos = new Element("pedidos");
 				ePedidos.setAttribute("fecha", fecha);
 				docp.getRootElement().addContent(ePedidos);
 				
-				Element ePedido = new Element("pedido");
+				Element ePedido = crearElementoPedido(primero, principal, adicionales);
 				ePedidos.addContent(ePedido);
-				
-				Element ePrimero = new Element("primero").setText(primero);
-				Element ePrincipal = new Element("principal").setText(principal);
-				
-				ePedido.addContent(ePrimero);
-				ePedido.addContent(ePrincipal);
-				
-				if(adicionales != null) {
-					Element eAdicionales = new Element("adicionales");
-					for (String adic : adicionales) {
-						Element eAdicional = new Element("adicional").setText(adic);
-						eAdicionales.addContent(eAdicional);
-					}
-					ePedido.addContent(eAdicionales);
-				}
 
 
 			}
@@ -164,6 +134,28 @@ public class GestorXML {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+
+	private Element crearElementoPedido(String primero, String principal, String[] adicionales) {
+		Element ePedido = new Element("pedido");
+		
+		
+		Element ePrimero = new Element("primero").setText(primero);
+		Element ePrincipal = new Element("principal").setText(principal);
+		
+		ePedido.addContent(ePrimero);
+		ePedido.addContent(ePrincipal);
+		
+		if(adicionales.length > 0 ) {
+			Element eAdicionales = new Element("adicionales");
+			for (String adic : adicionales) {
+				Element eAdicional = new Element("adicional").setText(adic);
+				eAdicionales.addContent(eAdicional);
+			}
+			ePedido.addContent(eAdicionales);
+		}
+		
+		return ePedido;
 	}
 	
 	

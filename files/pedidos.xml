@@ -1,50 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <raiz>
-  <pedidos fecha="23-02">
-    <pedido>
-      <primero>Soup</primero>
-      <principal>Chicken wings</principal>
-      <adicionales>
-        <adicional>Wine</adicional>
-      </adicionales>
-    </pedido>
-    <pedido>
-      <primero>Green salad</primero>
-      <principal>Chicken wings</principal>
-      <adicionales>
-        <adicional>Coffee</adicional>
-        <adicional>M.water</adicional>
-      </adicionales>
-    </pedido>
-  </pedidos>
-  <pedidos fecha="16-4">
+  <pedidos fecha="17-4">
     <pedido>
       <primero>Grilled veg</primero>
       <principal>Bocata naranjas</principal>
       <adicionales>
-        <adicional>Coca Cola</adicional>
+        <adicional>Pepsi</adicional>
       </adicionales>
     </pedido>
-    <pedido>
-      <primero>Arroz cubano</primero>
-      <principal>Bocata naranjas</principal>
-    </pedido>
-    <pedido>
-      <primero>Arroz cubano</primero>
-      <principal>Bocata naranjas</principal>
-    </pedido>
+  </pedidos>
+  <pedidos fecha="18-4">
     <pedido>
       <primero>Constilla de cerdo</primero>
       <principal>Bocata naranjas</principal>
       <adicionales>
-        <adicional>Wine</adicional>
         <adicional>Coca Cola</adicional>
         <adicional>Pepsi</adicional>
+        <adicional>Kas Naranja</adicional>
+        <adicional>Manaos</adicional>
       </adicionales>
     </pedido>
+  </pedidos>
+  <pedidos fecha="17-5">
     <pedido>
-      <primero>Arroz cubano</primero>
+      <primero>Grilled veg</primero>
       <principal>Bocata naranjas</principal>
+      <adicionales>
+        <adicional>Pepsi</adicional>
+      </adicionales>
     </pedido>
   </pedidos>
 </raiz>
