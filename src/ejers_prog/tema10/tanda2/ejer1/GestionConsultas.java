@@ -30,8 +30,8 @@ public class GestionConsultas extends JFrame {
 	private GestorXML gestor;
 	private File f;
 	private JList<HoraConsulta> listaHorarios;
-	private final HoraConsulta HORA_INICIO = new HoraConsulta(9, 00);
-	private final HoraConsulta HORA_FIN = new HoraConsulta(15, 30);
+	private static final HoraConsulta HORA_INICIO = new HoraConsulta(9, 10);
+	private static final HoraConsulta HORA_FIN = new HoraConsulta(20, 45);
 	private JComboBox<String> comboMedicos;
 	private JTextField inputNombrePaciente;
 	private JButton botonAniadir;
@@ -54,6 +54,10 @@ public class GestionConsultas extends JFrame {
 				List<HoraConsulta> horaCitaSolicitadas = listaHorarios.getSelectedValuesList();
 				String medico = (String) comboMedicos.getSelectedItem();
 				String nomPaciente = inputNombrePaciente.getText();
+				if(inputNombrePaciente.getText().equals("")) {
+					inputNombrePaciente.requestFocus();
+					return;
+				};
 				ArrayList<HoraConsulta> citasOcupadas = gestor.citasMedico(medico);
 				String textoAsignadas = "CONSULTAS ASIGNADAS: " + nomPaciente + " - " + medico + "\n";
 				String textoFallidas = "CONSULTAS NO ASIGNADAS: " + medico  + " YA TIENE ASIGNASDAS:" + "\n";
@@ -135,7 +139,9 @@ public class GestionConsultas extends JFrame {
 		panelOeste.setLayout(new BoxLayout(panelOeste, BoxLayout.Y_AXIS));
 		JLabel titulo = new JLabel("Elija una o más horas");
 
-		listaHorarios = new JList<HoraConsulta>(generarArrayHoraConsulta(HORA_INICIO, HORA_FIN));
+		
+		
+		listaHorarios = new JList<HoraConsulta>(generarArrayHoraConsulta());
 		JScrollPane scrollPanelHorarios = new JScrollPane(listaHorarios);
 		scrollPanelHorarios.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
 		scrollPanelHorarios.setPreferredSize(new Dimension(30, 100));
@@ -146,17 +152,25 @@ public class GestionConsultas extends JFrame {
 		return panelOeste;
 	}
 
-	private HoraConsulta[] generarArrayHoraConsulta(HoraConsulta horaInicio, HoraConsulta horaFin) {
+	private HoraConsulta[] generarArrayHoraConsulta() {
 
-		int totalHorasConsultas = (horaFin.getHora() - horaInicio.getHora()) * 2 + 2;
+		int totalHorasConsultas = (HORA_FIN.getHora() - HORA_INICIO.getHora()) * 2 + 2;
 
 		HoraConsulta[] horarios = new HoraConsulta[totalHorasConsultas];
 
-		horarios[0] = horaInicio;
-
-		for (int i = 1; i < horarios.length; i++) {
-			horarios[i] = horarios[i - 1].siguienteHoraConsulta();
+		
+		horarios[0] = HORA_INICIO;
+		horarios[totalHorasConsultas-1] = HORA_FIN;
+		for (int i = 1; i < horarios.length-1; i++) {
+			HoraConsulta consultaAnterior = horarios[i-1];
+			if(consultaAnterior.getMinutos() + 30 >= 60) {
+				horarios[i] = new HoraConsulta(consultaAnterior.getHora() + 1, + (consultaAnterior.getMinutos() +30) - 60);
+			}else {
+				horarios[i] = new HoraConsulta(consultaAnterior.getHora(), consultaAnterior.getMinutos() + 30);
+			}
 		}
+		
+		
 
 		return horarios;
 	}

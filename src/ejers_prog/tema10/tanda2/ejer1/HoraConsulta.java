@@ -52,16 +52,6 @@ public class HoraConsulta {
 		return minutos;
 	}
 
-	public HoraConsulta siguienteHoraConsulta() {
-		
-		if(this.minutos == 0){
-			HoraConsulta siguienteHoraConsulta = new HoraConsulta(this.hora, minutos +30);
-			return siguienteHoraConsulta;
-		}else {
-			HoraConsulta siguienteHoraConsulta = new HoraConsulta(this.hora + 1, 00);
-			return siguienteHoraConsulta;
-		}
-	}
 
 
 	@Override

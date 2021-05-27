@@ -6,6 +6,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="D:/dw1/Prog/ejercicios_prog/ejers_prog/jdom-2.0.6.jar"/>
+	<classpathentry kind="lib" path="C:/Users/dw1b/github/ejercicios_programacion/jdom-2.0.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

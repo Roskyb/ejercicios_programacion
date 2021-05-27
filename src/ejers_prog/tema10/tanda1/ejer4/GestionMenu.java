@@ -5,12 +5,16 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
+import org.jdom2.Content;
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
+import org.jdom2.output.Format;
+import org.jdom2.output.XMLOutputter;
 
 public class GestionMenu {
 
@@ -20,13 +24,43 @@ public class GestionMenu {
 	public GestionMenu(String nomFich) {
 		super();
 		this.nomFich = nomFich;
+		parsear();
+		
+	}
+
+
+
+
+	private void parsear() {
 		SAXBuilder builder = new SAXBuilder();
 		try {
 			this.doc = builder.build(new File("files/menus/" +  this.nomFich));
 		} catch (JDOMException | IOException e) {
 			System.out.println("XML mal formado");
 		}
+	}
+	
+	public void ver() {
+		String root = doc.getRootElement().toString();
+		root = root.substring(root.indexOf("<"), root.indexOf(">") + 1);
+		String iRoot = root.replace("/", "");
+		System.out.println(iRoot);
 		
+		for (Element element : doc.getRootElement().getChildren()) {
+			String eStr = element.toString();
+			eStr = eStr.substring(eStr.indexOf("<"), eStr.indexOf(">") + 1);
+			System.out.println("\t" + eStr);
+		}
+		
+		
+		System.out.println(root);
+		
+//		XMLOutputter out = new XMLOutputter(Format.getPrettyFormat());
+//		try {
+//			out.output(doc, System.out);
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
 	}
 	
 	
@@ -166,8 +200,10 @@ public class GestionMenu {
 				System.out.println(plato.toString());
 			}
 		}
+		a.ver();
 	}
 	
+
 	
 
 	
